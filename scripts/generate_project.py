@@ -12,6 +12,7 @@ import os
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 APP_NAME = "Umbra"
 TEST_NAME = "UmbraTests"
+UI_TEST_NAME = "UmbraUITests"
 BUNDLE_ID = "com.localfirst.umbra"
 DEPLOYMENT_TARGET = "17.0"
 
@@ -32,6 +33,7 @@ def swift_files(rel_dir):
 
 app_sources = swift_files(APP_NAME)
 test_sources = swift_files(TEST_NAME)
+ui_test_sources = swift_files(UI_TEST_NAME)
 
 # Assets + Info.plist + privacy manifest
 assets_rel = os.path.join(APP_NAME, "Assets.xcassets")
@@ -42,7 +44,7 @@ privacy_rel = os.path.join(APP_NAME, "PrivacyInfo.xcprivacy")
 file_ref = {}       # rel path -> file reference id
 build_file = {}     # (rel path, target) -> build file id
 
-for p in app_sources + test_sources + [assets_rel, privacy_rel]:
+for p in app_sources + test_sources + ui_test_sources + [assets_rel, privacy_rel]:
     file_ref[p] = uid()
 
 assets_build = uid()
@@ -53,38 +55,50 @@ build_file[(assets_rel, "app")] = assets_build
 build_file[(privacy_rel, "app")] = privacy_build
 for p in test_sources:
     build_file[(p, "test")] = uid()
+for p in ui_test_sources:
+    build_file[(p, "uitest")] = uid()
 
 # Product references
 app_product = uid()
 test_product = uid()
+ui_test_product = uid()
 
 # Groups
 grp_main = uid()
 grp_app = uid()
 grp_tests = uid()
+grp_uitests = uid()
 grp_products = uid()
 grp_frameworks = uid()
 
 # Targets / phases / configs
 app_target = uid()
 test_target = uid()
+ui_test_target = uid()
 project_obj = uid()
 app_src_phase = uid()
 app_res_phase = uid()
 app_fw_phase = uid()
 test_src_phase = uid()
 test_fw_phase = uid()
+ui_test_src_phase = uid()
+ui_test_fw_phase = uid()
 proj_cfg_list = uid()
 app_cfg_list = uid()
 test_cfg_list = uid()
+ui_test_cfg_list = uid()
 proj_debug = uid()
 proj_release = uid()
 app_debug = uid()
 app_release = uid()
 test_debug = uid()
 test_release = uid()
+ui_test_debug = uid()
+ui_test_release = uid()
 dep_proxy = uid()
 target_dep = uid()
+ui_dep_proxy = uid()
+ui_target_dep = uid()
 
 # --- Build pbxproj text -----------------------------------------------------
 L = []
@@ -109,11 +123,21 @@ w(f"\t\t{privacy_build} /* PrivacyInfo.xcprivacy in Resources */ = {{isa = PBXBu
 for p in test_sources:
     bid = build_file[(p, "test")]
     w(f"\t\t{bid} /* {os.path.basename(p)} in Sources */ = {{isa = PBXBuildFile; fileRef = {file_ref[p]} /* {os.path.basename(p)} */; }};")
+for p in ui_test_sources:
+    bid = build_file[(p, "uitest")]
+    w(f"\t\t{bid} /* {os.path.basename(p)} in Sources */ = {{isa = PBXBuildFile; fileRef = {file_ref[p]} /* {os.path.basename(p)} */; }};")
 w("/* End PBXBuildFile section */")
 
 # PBXContainerItemProxy
 w("\n/* Begin PBXContainerItemProxy section */")
 w(f"\t\t{dep_proxy} /* PBXContainerItemProxy */ = {{")
+w("\t\t\tisa = PBXContainerItemProxy;")
+w(f"\t\t\tcontainerPortal = {project_obj} /* Project object */;")
+w("\t\t\tproxyType = 1;")
+w(f"\t\t\tremoteGlobalIDString = {app_target};")
+w(f"\t\t\tremoteInfo = {APP_NAME};")
+w("\t\t};")
+w(f"\t\t{ui_dep_proxy} /* PBXContainerItemProxy */ = {{")
 w("\t\t\tisa = PBXContainerItemProxy;")
 w(f"\t\t\tcontainerPortal = {project_obj} /* Project object */;")
 w("\t\t\tproxyType = 1;")
@@ -135,7 +159,7 @@ def group_relative_path(p):
     return os.path.join(*parts[1:]) if len(parts) > 1 else p
 
 w("\n/* Begin PBXFileReference section */")
-for p in app_sources + test_sources:
+for p in app_sources + test_sources + ui_test_sources:
     name = os.path.basename(p)
     rel = group_relative_path(p)
     w(f"\t\t{file_ref[p]} /* {name} */ = {{isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = {rel}; sourceTree = \"<group>\"; }};")
@@ -144,6 +168,7 @@ w(f"\t\t{file_ref[privacy_rel]} /* PrivacyInfo.xcprivacy */ = {{isa = PBXFileRef
 w(f"\t\t{uid()} /* Info.plist placeholder */ = {{isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = \"<group>\"; }};")
 w(f"\t\t{app_product} /* {APP_NAME}.app */ = {{isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = {APP_NAME}.app; sourceTree = BUILT_PRODUCTS_DIR; }};")
 w(f"\t\t{test_product} /* {TEST_NAME}.xctest */ = {{isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = {TEST_NAME}.xctest; sourceTree = BUILT_PRODUCTS_DIR; }};")
+w(f"\t\t{ui_test_product} /* {UI_TEST_NAME}.xctest */ = {{isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = {UI_TEST_NAME}.xctest; sourceTree = BUILT_PRODUCTS_DIR; }};")
 w("/* End PBXFileReference section */")
 
 # PBXFrameworksBuildPhase
@@ -155,6 +180,12 @@ w("\t\t\tfiles = (\n\t\t\t);")
 w("\t\t\trunOnlyForDeploymentPostprocessing = 0;")
 w("\t\t};")
 w(f"\t\t{test_fw_phase} /* Frameworks */ = {{")
+w("\t\t\tisa = PBXFrameworksBuildPhase;")
+w("\t\t\tbuildActionMask = 2147483647;")
+w("\t\t\tfiles = (\n\t\t\t);")
+w("\t\t\trunOnlyForDeploymentPostprocessing = 0;")
+w("\t\t};")
+w(f"\t\t{ui_test_fw_phase} /* Frameworks */ = {{")
 w("\t\t\tisa = PBXFrameworksBuildPhase;")
 w("\t\t\tbuildActionMask = 2147483647;")
 w("\t\t\tfiles = (\n\t\t\t);")
@@ -176,6 +207,7 @@ w("\t\t\tisa = PBXGroup;")
 w("\t\t\tchildren = (")
 w(f"\t\t\t\t{grp_app} /* {APP_NAME} */,")
 w(f"\t\t\t\t{grp_tests} /* {TEST_NAME} */,")
+w(f"\t\t\t\t{grp_uitests} /* {UI_TEST_NAME} */,")
 w(f"\t\t\t\t{grp_products} /* Products */,")
 w(f"\t\t\t\t{grp_frameworks} /* Frameworks */,")
 w("\t\t\t);")
@@ -201,12 +233,23 @@ w("\t\t\t);")
 w(f"\t\t\tpath = {TEST_NAME};")
 w("\t\t\tsourceTree = \"<group>\";")
 w("\t\t};")
+# ui tests group
+w(f"\t\t{grp_uitests} /* {UI_TEST_NAME} */ = {{")
+w("\t\t\tisa = PBXGroup;")
+w("\t\t\tchildren = (")
+for p in ui_test_sources:
+    w(f"\t\t\t\t{file_ref[p]},")
+w("\t\t\t);")
+w(f"\t\t\tpath = {UI_TEST_NAME};")
+w("\t\t\tsourceTree = \"<group>\";")
+w("\t\t};")
 # products group
 w(f"\t\t{grp_products} /* Products */ = {{")
 w("\t\t\tisa = PBXGroup;")
 w("\t\t\tchildren = (")
 w(f"\t\t\t\t{app_product} /* {APP_NAME}.app */,")
 w(f"\t\t\t\t{test_product} /* {TEST_NAME}.xctest */,")
+w(f"\t\t\t\t{ui_test_product} /* {UI_TEST_NAME}.xctest */,")
 w("\t\t\t);")
 w("\t\t\tname = Products;")
 w("\t\t\tsourceTree = \"<group>\";")
@@ -253,6 +296,22 @@ w(f"\t\t\tproductName = {TEST_NAME};")
 w(f"\t\t\tproductReference = {test_product} /* {TEST_NAME}.xctest */;")
 w("\t\t\tproductType = \"com.apple.product-type.bundle.unit-test\";")
 w("\t\t};")
+w(f"\t\t{ui_test_target} /* {UI_TEST_NAME} */ = {{")
+w("\t\t\tisa = PBXNativeTarget;")
+w(f"\t\t\tbuildConfigurationList = {ui_test_cfg_list} /* Build configuration list for PBXNativeTarget \"{UI_TEST_NAME}\" */;")
+w("\t\t\tbuildPhases = (")
+w(f"\t\t\t\t{ui_test_src_phase} /* Sources */,")
+w(f"\t\t\t\t{ui_test_fw_phase} /* Frameworks */,")
+w("\t\t\t);")
+w("\t\t\tbuildRules = (\n\t\t\t);")
+w("\t\t\tdependencies = (")
+w(f"\t\t\t\t{ui_target_dep} /* PBXTargetDependency */,")
+w("\t\t\t);")
+w(f"\t\t\tname = {UI_TEST_NAME};")
+w(f"\t\t\tproductName = {UI_TEST_NAME};")
+w(f"\t\t\tproductReference = {ui_test_product} /* {UI_TEST_NAME}.xctest */;")
+w("\t\t\tproductType = \"com.apple.product-type.bundle.ui-testing\";")
+w("\t\t};")
 w("/* End PBXNativeTarget section */")
 
 # PBXProject
@@ -271,6 +330,10 @@ w(f"\t\t\t\t\t{test_target} = {{")
 w("\t\t\t\t\t\tCreatedOnToolsVersion = 15.0;")
 w(f"\t\t\t\t\t\tTestTargetID = {app_target};")
 w("\t\t\t\t\t};")
+w(f"\t\t\t\t\t{ui_test_target} = {{")
+w("\t\t\t\t\t\tCreatedOnToolsVersion = 15.0;")
+w(f"\t\t\t\t\t\tTestTargetID = {app_target};")
+w("\t\t\t\t\t};")
 w("\t\t\t\t};")
 w("\t\t\t};")
 w(f"\t\t\tbuildConfigurationList = {proj_cfg_list} /* Build configuration list for PBXProject \"{APP_NAME}\" */;")
@@ -285,6 +348,7 @@ w("\t\t\tprojectRoot = \"\";")
 w("\t\t\ttargets = (")
 w(f"\t\t\t\t{app_target} /* {APP_NAME} */,")
 w(f"\t\t\t\t{test_target} /* {TEST_NAME} */,")
+w(f"\t\t\t\t{ui_test_target} /* {UI_TEST_NAME} */,")
 w("\t\t\t);")
 w("\t\t};")
 w("/* End PBXProject section */")
@@ -322,6 +386,15 @@ for p in test_sources:
 w("\t\t\t);")
 w("\t\t\trunOnlyForDeploymentPostprocessing = 0;")
 w("\t\t};")
+w(f"\t\t{ui_test_src_phase} /* Sources */ = {{")
+w("\t\t\tisa = PBXSourcesBuildPhase;")
+w("\t\t\tbuildActionMask = 2147483647;")
+w("\t\t\tfiles = (")
+for p in ui_test_sources:
+    w(f"\t\t\t\t{build_file[(p, 'uitest')]} /* {os.path.basename(p)} in Sources */,")
+w("\t\t\t);")
+w("\t\t\trunOnlyForDeploymentPostprocessing = 0;")
+w("\t\t};")
 w("/* End PBXSourcesBuildPhase section */")
 
 # PBXTargetDependency
@@ -330,6 +403,11 @@ w(f"\t\t{target_dep} /* PBXTargetDependency */ = {{")
 w("\t\t\tisa = PBXTargetDependency;")
 w(f"\t\t\ttarget = {app_target} /* {APP_NAME} */;")
 w(f"\t\t\ttargetProxy = {dep_proxy} /* PBXContainerItemProxy */;")
+w("\t\t};")
+w(f"\t\t{ui_target_dep} /* PBXTargetDependency */ = {{")
+w("\t\t\tisa = PBXTargetDependency;")
+w(f"\t\t\ttarget = {app_target} /* {APP_NAME} */;")
+w(f"\t\t\ttargetProxy = {ui_dep_proxy} /* PBXContainerItemProxy */;")
 w("\t\t};")
 w("/* End PBXTargetDependency section */")
 
@@ -404,6 +482,13 @@ def app_settings(debug):
         "ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;",
         "CODE_SIGN_STYLE = Automatic;",
         "CURRENT_PROJECT_VERSION = 1;",
+        # Real Apple Developer team for this app, needed for on-device debug
+        # runs and (Release, generic/platform=iOS) archive builds. Automatic
+        # signing still resolves the actual certificate/profile; this only
+        # tells Xcode which team to sign with. Without this, regenerating the
+        # project silently drops device-signing capability (archive fails
+        # with "requires a development team").
+        "DEVELOPMENT_TEAM = 796XH483R4;",
         "DEVELOPMENT_ASSET_PATHS = \"\";",
         "ENABLE_PREVIEWS = YES;",
         "GENERATE_INFOPLIST_FILE = NO;",
@@ -469,6 +554,39 @@ for s in test_settings():
 w("\t\t\t};")
 w("\t\t\tname = Release;")
 w("\t\t};")
+
+def ui_test_settings():
+    return [
+        "ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;",
+        "CODE_SIGN_STYLE = Automatic;",
+        "CURRENT_PROJECT_VERSION = 1;",
+        "GENERATE_INFOPLIST_FILE = YES;",
+        f"IPHONEOS_DEPLOYMENT_TARGET = {DEPLOYMENT_TARGET};",
+        "MARKETING_VERSION = 1.0;",
+        f"PRODUCT_BUNDLE_IDENTIFIER = {BUNDLE_ID}.uitests;",
+        "PRODUCT_NAME = \"$(TARGET_NAME)\";",
+        "SWIFT_EMIT_LOC_STRINGS = NO;",
+        "SWIFT_VERSION = 5.0;",
+        "TARGETED_DEVICE_FAMILY = \"1,2\";",
+        f"TEST_TARGET_NAME = {APP_NAME};",
+    ]
+
+w(f"\t\t{ui_test_debug} /* Debug */ = {{")
+w("\t\t\tisa = XCBuildConfiguration;")
+w("\t\t\tbuildSettings = {")
+for s in ui_test_settings():
+    w(f"\t\t\t\t{s}")
+w("\t\t\t};")
+w("\t\t\tname = Debug;")
+w("\t\t};")
+w(f"\t\t{ui_test_release} /* Release */ = {{")
+w("\t\t\tisa = XCBuildConfiguration;")
+w("\t\t\tbuildSettings = {")
+for s in ui_test_settings():
+    w(f"\t\t\t\t{s}")
+w("\t\t\t};")
+w("\t\t\tname = Release;")
+w("\t\t};")
 w("/* End XCBuildConfiguration section */")
 
 # XCConfigurationList
@@ -486,6 +604,7 @@ def cfg_list(cid, name, kind, debug_id, release_id):
 cfg_list(proj_cfg_list, APP_NAME, "PBXProject", proj_debug, proj_release)
 cfg_list(app_cfg_list, APP_NAME, "PBXNativeTarget", app_debug, app_release)
 cfg_list(test_cfg_list, TEST_NAME, "PBXNativeTarget", test_debug, test_release)
+cfg_list(ui_test_cfg_list, UI_TEST_NAME, "PBXNativeTarget", ui_test_debug, ui_test_release)
 w("/* End XCConfigurationList section */")
 
 w("\t};")
@@ -498,8 +617,9 @@ with open(os.path.join(proj_dir, "project.pbxproj"), "w") as f:
     f.write("\n".join(L) + "\n")
 
 print(f"Wrote {proj_dir}/project.pbxproj")
-print(f"  app sources : {len(app_sources)}")
-print(f"  test sources: {len(test_sources)}")
+print(f"  app sources    : {len(app_sources)}")
+print(f"  test sources   : {len(test_sources)}")
+print(f"  UI test sources: {len(ui_test_sources)}")
 
 # --- Shared scheme ----------------------------------------------------------
 scheme_dir = os.path.join(proj_dir, "xcshareddata", "xcschemes")
@@ -527,6 +647,15 @@ scheme = f"""<?xml version="1.0" encoding="UTF-8"?>
                BlueprintIdentifier = "{test_target}"
                BuildableName = "{TEST_NAME}.xctest"
                BlueprintName = "{TEST_NAME}"
+               ReferencedContainer = "container:{APP_NAME}.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "{ui_test_target}"
+               BuildableName = "{UI_TEST_NAME}.xctest"
+               BlueprintName = "{UI_TEST_NAME}"
                ReferencedContainer = "container:{APP_NAME}.xcodeproj">
             </BuildableReference>
          </TestableReference>

@@ -7,48 +7,56 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		SL0000000000000000000025 /* ARContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000001 /* ARContainerView.swift */; };
-		SL0000000000000000000026 /* ARSceneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000002 /* ARSceneController.swift */; };
-		SL0000000000000000000027 /* ShadowMeshFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000003 /* ShadowMeshFactory.swift */; };
-		SL0000000000000000000028 /* UmbraApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000004 /* UmbraApp.swift */; };
-		SL0000000000000000000029 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000005 /* AppSettings.swift */; };
-		SL000000000000000000002A /* ProjectModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000006 /* ProjectModels.swift */; };
-		SL000000000000000000002B /* ARSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000007 /* ARSupport.swift */; };
-		SL000000000000000000002C /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000008 /* LocationService.swift */; };
-		SL000000000000000000002D /* ShadowGeometryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000009 /* ShadowGeometryService.swift */; };
-		SL000000000000000000002E /* SolarDayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL000000000000000000000A /* SolarDayService.swift */; };
-		SL000000000000000000002F /* SunPositionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL000000000000000000000B /* SunPositionService.swift */; };
-		SL0000000000000000000030 /* BlockerStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL000000000000000000000C /* BlockerStyle.swift */; };
-		SL0000000000000000000031 /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL000000000000000000000D /* Geometry.swift */; };
-		SL0000000000000000000032 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL000000000000000000000E /* Haptics.swift */; };
-		SL0000000000000000000033 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL000000000000000000000F /* ShareSheet.swift */; };
-		SL0000000000000000000034 /* SnapshotStamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000010 /* SnapshotStamp.swift */; };
-		SL0000000000000000000035 /* UmbraTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000011 /* UmbraTheme.swift */; };
-		SL0000000000000000000036 /* ARLensViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000012 /* ARLensViewModel.swift */; };
-		SL0000000000000000000037 /* ARLensView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000013 /* ARLensView.swift */; };
-		SL0000000000000000000038 /* MockSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000014 /* MockSceneView.swift */; };
-		SL0000000000000000000039 /* ObjectPaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000015 /* ObjectPaletteView.swift */; };
-		SL000000000000000000003A /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000016 /* OnboardingView.swift */; };
-		SL000000000000000000003B /* ProjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000017 /* ProjectsView.swift */; };
-		SL000000000000000000003C /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000018 /* RootView.swift */; };
-		SL000000000000000000003D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000019 /* SettingsView.swift */; };
-		SL000000000000000000003E /* SunPathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL000000000000000000001A /* SunPathView.swift */; };
-		SL000000000000000000003F /* TimeScrubberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL000000000000000000001B /* TimeScrubberView.swift */; };
-		SL0000000000000000000023 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000021 /* Assets.xcassets */; };
-		SL0000000000000000000024 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000022 /* PrivacyInfo.xcprivacy */; };
-		SL0000000000000000000040 /* ARLensViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL000000000000000000001C /* ARLensViewModelTests.swift */; };
-		SL0000000000000000000041 /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL000000000000000000001D /* ModelTests.swift */; };
-		SL0000000000000000000042 /* ShadowGeometryServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL000000000000000000001E /* ShadowGeometryServiceTests.swift */; };
-		SL0000000000000000000043 /* SolarDayServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL000000000000000000001F /* SolarDayServiceTests.swift */; };
-		SL0000000000000000000044 /* SunPositionServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000020 /* SunPositionServiceTests.swift */; };
+		SL0000000000000000000026 /* ARContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000001 /* ARContainerView.swift */; };
+		SL0000000000000000000027 /* ARSceneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000002 /* ARSceneController.swift */; };
+		SL0000000000000000000028 /* ShadowMeshFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000003 /* ShadowMeshFactory.swift */; };
+		SL0000000000000000000029 /* UmbraApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000004 /* UmbraApp.swift */; };
+		SL000000000000000000002A /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000005 /* AppSettings.swift */; };
+		SL000000000000000000002B /* ProjectModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000006 /* ProjectModels.swift */; };
+		SL000000000000000000002C /* ARSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000007 /* ARSupport.swift */; };
+		SL000000000000000000002D /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000008 /* LocationService.swift */; };
+		SL000000000000000000002E /* ShadowGeometryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000009 /* ShadowGeometryService.swift */; };
+		SL000000000000000000002F /* SolarDayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL000000000000000000000A /* SolarDayService.swift */; };
+		SL0000000000000000000030 /* SunPositionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL000000000000000000000B /* SunPositionService.swift */; };
+		SL0000000000000000000031 /* BlockerStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL000000000000000000000C /* BlockerStyle.swift */; };
+		SL0000000000000000000032 /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL000000000000000000000D /* Geometry.swift */; };
+		SL0000000000000000000033 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL000000000000000000000E /* Haptics.swift */; };
+		SL0000000000000000000034 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL000000000000000000000F /* ShareSheet.swift */; };
+		SL0000000000000000000035 /* SnapshotStamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000010 /* SnapshotStamp.swift */; };
+		SL0000000000000000000036 /* UmbraTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000011 /* UmbraTheme.swift */; };
+		SL0000000000000000000037 /* ARLensViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000012 /* ARLensViewModel.swift */; };
+		SL0000000000000000000038 /* ARLensView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000013 /* ARLensView.swift */; };
+		SL0000000000000000000039 /* MockSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000014 /* MockSceneView.swift */; };
+		SL000000000000000000003A /* ObjectPaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000015 /* ObjectPaletteView.swift */; };
+		SL000000000000000000003B /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000016 /* OnboardingView.swift */; };
+		SL000000000000000000003C /* ProjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000017 /* ProjectsView.swift */; };
+		SL000000000000000000003D /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000018 /* RootView.swift */; };
+		SL000000000000000000003E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000019 /* SettingsView.swift */; };
+		SL000000000000000000003F /* SunPathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL000000000000000000001A /* SunPathView.swift */; };
+		SL0000000000000000000040 /* TimeScrubberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL000000000000000000001B /* TimeScrubberView.swift */; };
+		SL0000000000000000000024 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000022 /* Assets.xcassets */; };
+		SL0000000000000000000025 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000023 /* PrivacyInfo.xcprivacy */; };
+		SL0000000000000000000041 /* ARLensViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL000000000000000000001C /* ARLensViewModelTests.swift */; };
+		SL0000000000000000000042 /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL000000000000000000001D /* ModelTests.swift */; };
+		SL0000000000000000000043 /* ShadowGeometryServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL000000000000000000001E /* ShadowGeometryServiceTests.swift */; };
+		SL0000000000000000000044 /* SolarDayServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL000000000000000000001F /* SolarDayServiceTests.swift */; };
+		SL0000000000000000000045 /* SunPositionServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000020 /* SunPositionServiceTests.swift */; };
+		SL0000000000000000000046 /* UmbraUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = SL0000000000000000000021 /* UmbraUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		SL000000000000000000005D /* PBXContainerItemProxy */ = {
+		SL0000000000000000000067 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = SL000000000000000000004E /* Project object */;
+			containerPortal = SL0000000000000000000053 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = SL000000000000000000004C;
+			remoteGlobalIDString = SL0000000000000000000050;
+			remoteInfo = Umbra;
+		};
+		SL0000000000000000000069 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = SL0000000000000000000053 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = SL0000000000000000000050;
 			remoteInfo = Umbra;
 		};
 /* End PBXContainerItemProxy section */
@@ -86,22 +94,31 @@
 		SL000000000000000000001E /* ShadowGeometryServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowGeometryServiceTests.swift; sourceTree = "<group>"; };
 		SL000000000000000000001F /* SolarDayServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarDayServiceTests.swift; sourceTree = "<group>"; };
 		SL0000000000000000000020 /* SunPositionServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunPositionServiceTests.swift; sourceTree = "<group>"; };
-		SL0000000000000000000021 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		SL0000000000000000000022 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		SL000000000000000000005F /* Info.plist placeholder */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		SL0000000000000000000045 /* Umbra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Umbra.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		SL0000000000000000000046 /* UmbraTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UmbraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		SL0000000000000000000021 /* UmbraUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbraUITests.swift; sourceTree = "<group>"; };
+		SL0000000000000000000022 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		SL0000000000000000000023 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		SL000000000000000000006B /* Info.plist placeholder */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		SL0000000000000000000047 /* Umbra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Umbra.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		SL0000000000000000000048 /* UmbraTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UmbraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		SL0000000000000000000049 /* UmbraUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UmbraUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		SL0000000000000000000051 /* Frameworks */ = {
+		SL0000000000000000000056 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		SL0000000000000000000053 /* Frameworks */ = {
+		SL0000000000000000000058 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		SL000000000000000000005A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -111,17 +128,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		SL0000000000000000000047 = {
+		SL000000000000000000004A = {
 			isa = PBXGroup;
 			children = (
-				SL0000000000000000000048 /* Umbra */,
-				SL0000000000000000000049 /* UmbraTests */,
-				SL000000000000000000004A /* Products */,
-				SL000000000000000000004B /* Frameworks */,
+				SL000000000000000000004B /* Umbra */,
+				SL000000000000000000004C /* UmbraTests */,
+				SL000000000000000000004D /* UmbraUITests */,
+				SL000000000000000000004E /* Products */,
+				SL000000000000000000004F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		SL0000000000000000000048 /* Umbra */ = {
+		SL000000000000000000004B /* Umbra */ = {
 			isa = PBXGroup;
 			children = (
 				SL0000000000000000000001,
@@ -151,13 +169,13 @@
 				SL0000000000000000000019,
 				SL000000000000000000001A,
 				SL000000000000000000001B,
-				SL0000000000000000000021,
 				SL0000000000000000000022,
+				SL0000000000000000000023,
 			);
 			path = Umbra;
 			sourceTree = "<group>";
 		};
-		SL0000000000000000000049 /* UmbraTests */ = {
+		SL000000000000000000004C /* UmbraTests */ = {
 			isa = PBXGroup;
 			children = (
 				SL000000000000000000001C,
@@ -169,16 +187,25 @@
 			path = UmbraTests;
 			sourceTree = "<group>";
 		};
-		SL000000000000000000004A /* Products */ = {
+		SL000000000000000000004D /* UmbraUITests */ = {
 			isa = PBXGroup;
 			children = (
-				SL0000000000000000000045 /* Umbra.app */,
-				SL0000000000000000000046 /* UmbraTests.xctest */,
+				SL0000000000000000000021,
+			);
+			path = UmbraUITests;
+			sourceTree = "<group>";
+		};
+		SL000000000000000000004E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				SL0000000000000000000047 /* Umbra.app */,
+				SL0000000000000000000048 /* UmbraTests.xctest */,
+				SL0000000000000000000049 /* UmbraUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		SL000000000000000000004B /* Frameworks */ = {
+		SL000000000000000000004F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -188,13 +215,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		SL000000000000000000004C /* Umbra */ = {
+		SL0000000000000000000050 /* Umbra */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = SL0000000000000000000055 /* Build configuration list for PBXNativeTarget "Umbra" */;
+			buildConfigurationList = SL000000000000000000005C /* Build configuration list for PBXNativeTarget "Umbra" */;
 			buildPhases = (
-				SL000000000000000000004F /* Sources */,
-				SL0000000000000000000051 /* Frameworks */,
-				SL0000000000000000000050 /* Resources */,
+				SL0000000000000000000054 /* Sources */,
+				SL0000000000000000000056 /* Frameworks */,
+				SL0000000000000000000055 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -202,46 +229,67 @@
 			);
 			name = Umbra;
 			productName = Umbra;
-			productReference = SL0000000000000000000045 /* Umbra.app */;
+			productReference = SL0000000000000000000047 /* Umbra.app */;
 			productType = "com.apple.product-type.application";
 		};
-		SL000000000000000000004D /* UmbraTests */ = {
+		SL0000000000000000000051 /* UmbraTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = SL0000000000000000000056 /* Build configuration list for PBXNativeTarget "UmbraTests" */;
+			buildConfigurationList = SL000000000000000000005D /* Build configuration list for PBXNativeTarget "UmbraTests" */;
 			buildPhases = (
-				SL0000000000000000000052 /* Sources */,
-				SL0000000000000000000053 /* Frameworks */,
+				SL0000000000000000000057 /* Sources */,
+				SL0000000000000000000058 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				SL000000000000000000005E /* PBXTargetDependency */,
+				SL0000000000000000000068 /* PBXTargetDependency */,
 			);
 			name = UmbraTests;
 			productName = UmbraTests;
-			productReference = SL0000000000000000000046 /* UmbraTests.xctest */;
+			productReference = SL0000000000000000000048 /* UmbraTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		SL0000000000000000000052 /* UmbraUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = SL000000000000000000005E /* Build configuration list for PBXNativeTarget "UmbraUITests" */;
+			buildPhases = (
+				SL0000000000000000000059 /* Sources */,
+				SL000000000000000000005A /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				SL000000000000000000006A /* PBXTargetDependency */,
+			);
+			name = UmbraUITests;
+			productName = UmbraUITests;
+			productReference = SL0000000000000000000049 /* UmbraUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		SL000000000000000000004E /* Project object */ = {
+		SL0000000000000000000053 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
-					SL000000000000000000004C = {
+					SL0000000000000000000050 = {
 						CreatedOnToolsVersion = 15.0;
 					};
-					SL000000000000000000004D = {
+					SL0000000000000000000051 = {
 						CreatedOnToolsVersion = 15.0;
-						TestTargetID = SL000000000000000000004C;
+						TestTargetID = SL0000000000000000000050;
+					};
+					SL0000000000000000000052 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = SL0000000000000000000050;
 					};
 				};
 			};
-			buildConfigurationList = SL0000000000000000000054 /* Build configuration list for PBXProject "Umbra" */;
+			buildConfigurationList = SL000000000000000000005B /* Build configuration list for PBXProject "Umbra" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -249,88 +297,102 @@
 				en,
 				Base,
 			);
-			mainGroup = SL0000000000000000000047;
-			productRefGroup = SL000000000000000000004A /* Products */;
+			mainGroup = SL000000000000000000004A;
+			productRefGroup = SL000000000000000000004E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				SL000000000000000000004C /* Umbra */,
-				SL000000000000000000004D /* UmbraTests */,
+				SL0000000000000000000050 /* Umbra */,
+				SL0000000000000000000051 /* UmbraTests */,
+				SL0000000000000000000052 /* UmbraUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		SL0000000000000000000050 /* Resources */ = {
+		SL0000000000000000000055 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				SL0000000000000000000023 /* Assets.xcassets in Resources */,
-				SL0000000000000000000024 /* PrivacyInfo.xcprivacy in Resources */,
+				SL0000000000000000000024 /* Assets.xcassets in Resources */,
+				SL0000000000000000000025 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		SL000000000000000000004F /* Sources */ = {
+		SL0000000000000000000054 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				SL0000000000000000000025 /* ARContainerView.swift in Sources */,
-				SL0000000000000000000026 /* ARSceneController.swift in Sources */,
-				SL0000000000000000000027 /* ShadowMeshFactory.swift in Sources */,
-				SL0000000000000000000028 /* UmbraApp.swift in Sources */,
-				SL0000000000000000000029 /* AppSettings.swift in Sources */,
-				SL000000000000000000002A /* ProjectModels.swift in Sources */,
-				SL000000000000000000002B /* ARSupport.swift in Sources */,
-				SL000000000000000000002C /* LocationService.swift in Sources */,
-				SL000000000000000000002D /* ShadowGeometryService.swift in Sources */,
-				SL000000000000000000002E /* SolarDayService.swift in Sources */,
-				SL000000000000000000002F /* SunPositionService.swift in Sources */,
-				SL0000000000000000000030 /* BlockerStyle.swift in Sources */,
-				SL0000000000000000000031 /* Geometry.swift in Sources */,
-				SL0000000000000000000032 /* Haptics.swift in Sources */,
-				SL0000000000000000000033 /* ShareSheet.swift in Sources */,
-				SL0000000000000000000034 /* SnapshotStamp.swift in Sources */,
-				SL0000000000000000000035 /* UmbraTheme.swift in Sources */,
-				SL0000000000000000000036 /* ARLensViewModel.swift in Sources */,
-				SL0000000000000000000037 /* ARLensView.swift in Sources */,
-				SL0000000000000000000038 /* MockSceneView.swift in Sources */,
-				SL0000000000000000000039 /* ObjectPaletteView.swift in Sources */,
-				SL000000000000000000003A /* OnboardingView.swift in Sources */,
-				SL000000000000000000003B /* ProjectsView.swift in Sources */,
-				SL000000000000000000003C /* RootView.swift in Sources */,
-				SL000000000000000000003D /* SettingsView.swift in Sources */,
-				SL000000000000000000003E /* SunPathView.swift in Sources */,
-				SL000000000000000000003F /* TimeScrubberView.swift in Sources */,
+				SL0000000000000000000026 /* ARContainerView.swift in Sources */,
+				SL0000000000000000000027 /* ARSceneController.swift in Sources */,
+				SL0000000000000000000028 /* ShadowMeshFactory.swift in Sources */,
+				SL0000000000000000000029 /* UmbraApp.swift in Sources */,
+				SL000000000000000000002A /* AppSettings.swift in Sources */,
+				SL000000000000000000002B /* ProjectModels.swift in Sources */,
+				SL000000000000000000002C /* ARSupport.swift in Sources */,
+				SL000000000000000000002D /* LocationService.swift in Sources */,
+				SL000000000000000000002E /* ShadowGeometryService.swift in Sources */,
+				SL000000000000000000002F /* SolarDayService.swift in Sources */,
+				SL0000000000000000000030 /* SunPositionService.swift in Sources */,
+				SL0000000000000000000031 /* BlockerStyle.swift in Sources */,
+				SL0000000000000000000032 /* Geometry.swift in Sources */,
+				SL0000000000000000000033 /* Haptics.swift in Sources */,
+				SL0000000000000000000034 /* ShareSheet.swift in Sources */,
+				SL0000000000000000000035 /* SnapshotStamp.swift in Sources */,
+				SL0000000000000000000036 /* UmbraTheme.swift in Sources */,
+				SL0000000000000000000037 /* ARLensViewModel.swift in Sources */,
+				SL0000000000000000000038 /* ARLensView.swift in Sources */,
+				SL0000000000000000000039 /* MockSceneView.swift in Sources */,
+				SL000000000000000000003A /* ObjectPaletteView.swift in Sources */,
+				SL000000000000000000003B /* OnboardingView.swift in Sources */,
+				SL000000000000000000003C /* ProjectsView.swift in Sources */,
+				SL000000000000000000003D /* RootView.swift in Sources */,
+				SL000000000000000000003E /* SettingsView.swift in Sources */,
+				SL000000000000000000003F /* SunPathView.swift in Sources */,
+				SL0000000000000000000040 /* TimeScrubberView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		SL0000000000000000000052 /* Sources */ = {
+		SL0000000000000000000057 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				SL0000000000000000000040 /* ARLensViewModelTests.swift in Sources */,
-				SL0000000000000000000041 /* ModelTests.swift in Sources */,
-				SL0000000000000000000042 /* ShadowGeometryServiceTests.swift in Sources */,
-				SL0000000000000000000043 /* SolarDayServiceTests.swift in Sources */,
-				SL0000000000000000000044 /* SunPositionServiceTests.swift in Sources */,
+				SL0000000000000000000041 /* ARLensViewModelTests.swift in Sources */,
+				SL0000000000000000000042 /* ModelTests.swift in Sources */,
+				SL0000000000000000000043 /* ShadowGeometryServiceTests.swift in Sources */,
+				SL0000000000000000000044 /* SolarDayServiceTests.swift in Sources */,
+				SL0000000000000000000045 /* SunPositionServiceTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		SL0000000000000000000059 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				SL0000000000000000000046 /* UmbraUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		SL000000000000000000005E /* PBXTargetDependency */ = {
+		SL0000000000000000000068 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = SL000000000000000000004C /* Umbra */;
-			targetProxy = SL000000000000000000005D /* PBXContainerItemProxy */;
+			target = SL0000000000000000000050 /* Umbra */;
+			targetProxy = SL0000000000000000000067 /* PBXContainerItemProxy */;
+		};
+		SL000000000000000000006A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = SL0000000000000000000050 /* Umbra */;
+			targetProxy = SL0000000000000000000069 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		SL0000000000000000000057 /* Debug */ = {
+		SL000000000000000000005F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -374,7 +436,7 @@
 			};
 			name = Debug;
 		};
-		SL0000000000000000000058 /* Release */ = {
+		SL0000000000000000000060 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -411,13 +473,14 @@
 			};
 			name = Release;
 		};
-		SL0000000000000000000059 /* Debug */ = {
+		SL0000000000000000000061 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 796XH483R4;
 				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
@@ -436,13 +499,14 @@
 			};
 			name = Debug;
 		};
-		SL000000000000000000005A /* Release */ = {
+		SL0000000000000000000062 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 796XH483R4;
 				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
@@ -461,7 +525,7 @@
 			};
 			name = Release;
 		};
-		SL000000000000000000005B /* Debug */ = {
+		SL0000000000000000000063 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -480,7 +544,7 @@
 			};
 			name = Debug;
 		};
-		SL000000000000000000005C /* Release */ = {
+		SL0000000000000000000064 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -496,40 +560,85 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Umbra.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Umbra";
+			};
+			name = Release;
+		};
+		SL0000000000000000000065 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.localfirst.umbra.uitests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Umbra;
+			};
+			name = Debug;
+		};
+		SL0000000000000000000066 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.localfirst.umbra.uitests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Umbra;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		SL0000000000000000000054 /* Build configuration list for PBXProject "Umbra" */ = {
+		SL000000000000000000005B /* Build configuration list for PBXProject "Umbra" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				SL0000000000000000000057 /* Debug */,
-				SL0000000000000000000058 /* Release */,
+				SL000000000000000000005F /* Debug */,
+				SL0000000000000000000060 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		SL0000000000000000000055 /* Build configuration list for PBXNativeTarget "Umbra" */ = {
+		SL000000000000000000005C /* Build configuration list for PBXNativeTarget "Umbra" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				SL0000000000000000000059 /* Debug */,
-				SL000000000000000000005A /* Release */,
+				SL0000000000000000000061 /* Debug */,
+				SL0000000000000000000062 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		SL0000000000000000000056 /* Build configuration list for PBXNativeTarget "UmbraTests" */ = {
+		SL000000000000000000005D /* Build configuration list for PBXNativeTarget "UmbraTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				SL000000000000000000005B /* Debug */,
-				SL000000000000000000005C /* Release */,
+				SL0000000000000000000063 /* Debug */,
+				SL0000000000000000000064 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		SL000000000000000000005E /* Build configuration list for PBXNativeTarget "UmbraUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				SL0000000000000000000065 /* Debug */,
+				SL0000000000000000000066 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = SL000000000000000000004E /* Project object */;
+	rootObject = SL0000000000000000000053 /* Project object */;
 }

@@ -12,10 +12,12 @@
 > **Implementation maturity: working SwiftUI app + unit tests (near launch; one hardware gate remains).**
 > The repo contains a real Xcode project (~30 Swift source files) with a complete MVVM
 > architecture, ARKit/RealityKit device path, a fully-functional simulator/preview ("mock")
-> path, SwiftData persistence, foreground CoreLocation, share/export, and 5 XCTest suites
-> (solar math, shadow geometry, the lens view model, and SwiftData persistence). The core
-> loop runs end-to-end **in the preview path today**; the on-device AR path is implemented
-> but **unverified on hardware**, which is now the single dominant launch risk.
+> path, SwiftData persistence, foreground CoreLocation, share/export, 5 XCTest unit suites
+> (solar math, shadow geometry, the lens view model, and SwiftData persistence), and (added
+> 2026-07-27) an XCUITest suite covering the real onboarding→library→lens→scrub→place flow.
+> The core loop runs end-to-end **in the preview path today**; the on-device AR path compiles
+> and archives (Release, generic/platform=iOS, confirmed 2026-07-27) but is **unverified on
+> hardware**, which is now the single dominant launch risk.
 >
 > **Update (2026-06-30 iteration).** All submission and truth-debt blockers are cleared:
 > a designed app icon is in place (BLK-2), a `PrivacyInfo.xcprivacy` manifest declares no
@@ -441,19 +443,27 @@ reconciliation + the §9 store/privacy/content items. F15 is intentionally not a
 
 ## 8. Production-Readiness Assessment
 
-### Current estimated readiness: **~85%**
+### Current estimated readiness: **~90%**
 Justification: the architecture is complete and clean, the math is correct and **unit-tested**
-(56 tests across 5 suites, now including the lens view model and SwiftData persistence), and the
-**planning loop runs end-to-end today in the preview path** (place → scrub → see shadows →
-stamped export → persist). As of the 2026-06-30 iteration, every submission blocker and all
-truth/copy debt is resolved: app icon (BLK-2), privacy manifest (BLK-5), a genuinely
+(58 tests across 5 suites, now including the lens view model and SwiftData persistence), the
+real onboarding→library→lens flow is now **UI-tested** (1 XCUITest, added 2026-07-27), a real
+`xcodebuild archive` for a generic iOS device destination now **succeeds** with the project's
+existing automatic signing (confirmed 2026-07-27), and the **planning loop runs end-to-end today
+in the preview path** (place → scrub → see shadows → stamped export → persist). As of the
+2026-06-30 iteration, every submission blocker and all truth/copy debt is resolved: app icon
+(BLK-2 — re-confirmed 2026-07-27 that the single-size universal icon is genuinely sufficient for
+this iOS 17+/Xcode 15+ project, not a gap), privacy manifest (BLK-5), a genuinely
 **offline** app with no network calls (BLK-3), and privacy/terms/README/marketing reconciled to
 the shipped app (BLK-4, BLK-6). Fast-follow polish landed too: stamped export (NB-2), height
 slider (NB-4), re-detect ground (NB-5), location nudge (NB-1), haptics, a brand design system,
-outdoor shadow-legibility tuning, and CI. The remaining ~15% is essentially **one gate**: the
-on-device AR path (BLK-1) is implemented but **unverified on real hardware** — plane reliability,
-tracking drift, and shadow legibility in bright sun must be confirmed on ≥2 devices before
-TestFlight. That verification (not more code) is what stands between this and ~95% launch-ready.
+outdoor shadow-legibility tuning, and CI. UI test coverage and the archive build (both previously
+open items) are now done. The remaining ~10% is essentially **one gate, and it is not something
+more engineering can close**: the on-device AR path (BLK-1) is implemented, unit- and UI-tested
+around its edges, and now compiles+archives for a real device — but it has only ever run in the
+Simulator's mock path and remains **unverified on real hardware**. Plane reliability, tracking
+drift, and shadow legibility in bright sun must be confirmed on ≥2 physical devices in a physical
+space before TestFlight; there is no way to validate this from a repo or a build log, and no
+attempt was made to fake or simulate that verification here.
 
 ### Ordered checklist to reach 80–90% production-ready
 1. **Run the on-device AR validation matrix (BLK-1).** Patio/balcony first; lighting
@@ -470,8 +480,17 @@ TestFlight. That verification (not more code) is what stands between this and ~9
 6. **Stamp exports (NB-2)** with date/time/location + "Approximate — Umbra" label.
 7. **First-use location nudge (NB-1)** when no fix and default is unchanged.
 8. **Clean up `TERMS_OF_SERVICE.md` (NB-3)**; decide on height slider vs removing the dead API (NB-4).
-9. **Add UI/integration tests** for onboarding→library→lens→place→scrub→export and a
-   persistence round-trip; smoke-build for device + simulator destinations in CI.
+9. ~~**Add UI/integration tests** for onboarding→library→lens→place→scrub→export and a
+   persistence round-trip; smoke-build for device + simulator destinations in CI.~~ **Done
+   (2026-07-27).** A `UmbraUITests` target now runs a smoke test
+   (`testOnboardingToLensPlaceObjectFlow`) covering launch → onboarding (Skip) → empty-state
+   library → create a plan → lens screen → dismiss the first-run coach → **Now** button (time
+   scrub responds, slider value changes) → select a palette kind → place an object → confirm
+   selection controls appear. It necessarily runs through `MockSceneView`, the Simulator's non-AR
+   fallback (see BLK-1) — that's expected; it verifies UI plumbing, not AR tracking. A real
+   `xcodebuild archive -destination 'generic/platform=iOS'` was also run (see §9 below) — that
+   compiles the real ARKit path (previously simulator-only) and confirms device signing, though
+   it does not run on a device.
 10. **Manual QA pass:** device sizes, Dynamic Type, VoiceOver, dark mode, permission-denied
     path, polar-latitude edge cases, store reopen.
 
@@ -481,10 +500,14 @@ TestFlight. That verification (not more code) is what stands between this and ~9
   `SolarDayServiceTests` (sunrise/noon/sunset ordering, day length, polar day/night, sun-path
   sampling), `ShadowGeometryServiceTests` (ground projection, convex hull/area, end-to-end
   shadow polygons for known geometries). This is the riskiest logic and it's solid.
-- **Not covered:** all UI/SwiftUI views, `ARLensViewModel` state transitions, SwiftData
-  persistence round-trips, `LocationService` authorization/geocoding behavior, the AR
-  controller (raycast, tracking states, mesh sync), and the share/snapshot pipeline. **No CI
-  workflow** is present. No on-device test evidence.
+- **Covered (UI, XCUITest, added 2026-07-27):** `UmbraUITests.testOnboardingToLensPlaceObjectFlow`
+  exercises the real onboarding → library → lens navigation path and confirms the time scrubber
+  and object placement respond, on the Simulator's mock/non-AR path.
+- **Not covered:** `ARLensViewModel` state transitions in isolation (only unit-tested indirectly
+  through the UI flow and `ARLensViewModelTests`), SwiftData persistence round-trips beyond
+  `ARLensViewModelTests.testPersistRoundTrip`, `LocationService` authorization/geocoding
+  behavior, the AR controller (raycast, tracking states, mesh sync), and the share/snapshot
+  pipeline. No on-device test evidence — see BLK-1, the one remaining gate.
 
 ---
 
@@ -493,8 +516,28 @@ TestFlight. That verification (not more code) is what stands between this and ~9
 **App Store / build**
 - [x] **BLK-2** 1024×1024 **AppIcon** added (`Umbra/Assets.xcassets/AppIcon.appiconset/AppIcon-1024.png`,
       generated reproducibly by `scripts/make_icon.py`).
-- [x] `Umbra.xcodeproj` builds & **56 tests pass** on the iOS 17+ simulator; project re-generated
-      via `scripts/generate_project.py`. (Real-device destination still to be run as part of BLK-1.)
+      **Re-verified 2026-07-27:** `Contents.json` is a single `idiom: universal` / `size: 1024x1024`
+      entry with no per-slot scale variants — the modern "single size" App Icon format Xcode
+      15+/iOS 17+ projects use (this project targets iOS 17.0 on Xcode 26.6). This is **not** a
+      missing-slots problem: `actool` compiles it with zero warnings and mechanically derives every
+      required device slot (confirmed in a real build log: `AppIcon60x60@2x.png` for iPhone,
+      `AppIcon76x76@2x~ipad.png` for iPad, plus the App Store marketing icon) from the one 1024px
+      source. No additional icon assets were generated because none are needed.
+- [x] `Umbra.xcodeproj` builds & **58 unit + 1 UI test = 59 tests pass** on the iOS 17+ simulator;
+      project re-generated via `scripts/generate_project.py` (now also emits a `UmbraUITests`
+      target — see checklist item 9 above).
+- [x] **Archive build attempted (2026-07-27):** `xcodebuild archive -scheme Umbra -configuration
+      Release -destination 'generic/platform=iOS'` **succeeded**, using the project's existing
+      automatic signing (`CODE_SIGN_STYLE = Automatic`, team `796XH483R4`) — no App Store Connect
+      access needed, only local dev-team membership. This also compiles the real
+      `#if canImport(ARKit) && !targetEnvironment(simulator)` device path for the first time (it
+      had only ever compiled out to `MockSceneView` on simulator builds). *(Note: while regenerating
+      the project to add the UI test target, `scripts/generate_project.py` was found to never emit
+      `DEVELOPMENT_TEAM` — it had only ever been present as an uncommitted, Xcode-added edit to the
+      on-disk `.pbxproj`, and regenerating the project silently dropped it, so the archive first
+      failed with "requires a development team." The generator now emits `DEVELOPMENT_TEAM =
+      796XH483R4;` for the app target so this survives regeneration.)* This is a compile+sign
+      check only — it does **not** run the app, and says nothing about on-device AR behavior (BLK-1).
 - [ ] App Store Connect record: name "Umbra", subtitle (no "accurate"), category Utilities
       (secondary Lifestyle/Photography), 5 screenshots + the 30s preview from real device AR. *(off-repo)*
 - [ ] **Age rating 4+**; no UGC, no objectionable content. *(off-repo, set in App Store Connect)*

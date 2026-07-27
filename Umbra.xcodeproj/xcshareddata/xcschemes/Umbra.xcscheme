@@ -5,7 +5,7 @@
          <BuildActionEntry buildForTesting = "YES" buildForRunning = "YES" buildForProfiling = "YES" buildForArchiving = "YES" buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "SL000000000000000000004C"
+               BlueprintIdentifier = "SL0000000000000000000050"
                BuildableName = "Umbra.app"
                BlueprintName = "Umbra"
                ReferencedContainer = "container:Umbra.xcodeproj">
@@ -18,9 +18,18 @@
          <TestableReference skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "SL000000000000000000004D"
+               BlueprintIdentifier = "SL0000000000000000000051"
                BuildableName = "UmbraTests.xctest"
                BlueprintName = "UmbraTests"
+               ReferencedContainer = "container:Umbra.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "SL0000000000000000000052"
+               BuildableName = "UmbraUITests.xctest"
+               BlueprintName = "UmbraUITests"
                ReferencedContainer = "container:Umbra.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -30,7 +39,7 @@
       <BuildableProductRunnable runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "SL000000000000000000004C"
+            BlueprintIdentifier = "SL0000000000000000000050"
             BuildableName = "Umbra.app"
             BlueprintName = "Umbra"
             ReferencedContainer = "container:Umbra.xcodeproj">
@@ -41,7 +50,7 @@
       <BuildableProductRunnable runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "SL000000000000000000004C"
+            BlueprintIdentifier = "SL0000000000000000000050"
             BuildableName = "Umbra.app"
             BlueprintName = "Umbra"
             ReferencedContainer = "container:Umbra.xcodeproj">

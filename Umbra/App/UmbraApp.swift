@@ -19,8 +19,13 @@ struct UmbraApp: App {
 
     init() {
         let schema = Schema([ARProject.self, PlacedBlocker.self, AppSettings.self])
+        // UI tests pass `-UITestReset` so every run starts from a clean,
+        // in-memory store (fresh onboarding, no projects) instead of whatever
+        // state a prior run or a developer's own simulator session left
+        // behind. This has no effect outside of XCUITest launches.
+        let isUITesting = ProcessInfo.processInfo.arguments.contains("-UITestReset")
         do {
-            let config = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+            let config = ModelConfiguration(schema: schema, isStoredInMemoryOnly: isUITesting)
             container = try ModelContainer(for: schema, configurations: [config])
         } catch {
             // Defensive fallback: never block launch on a persistence error.
